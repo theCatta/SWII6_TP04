@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddTransient(s => new CarroService("https://localhost:5135/api", new HttpClient()));
+builder.Services.AddTransient(s => new CarroService("http://localhost:5135/api", new HttpClient()));
 
 var app = builder.Build();
 

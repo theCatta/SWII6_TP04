@@ -55,13 +55,9 @@ namespace ClientWeb.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Type,Text")] Carro Carro)
+        public async Task<IActionResult> Create(Carro Carro)
         {
-            if (ModelState.IsValid)
-            {
-                await carroService.Create(Carro);
-                return RedirectToAction(nameof(Index));
-            }
+            await carroService.Create(Carro);
             return View(Carro);
         }
 
@@ -88,7 +84,7 @@ namespace ClientWeb.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Type,Text")] Carro Carro)
+        public async Task<IActionResult> Edit(int id, Carro Carro)
         {
             if (id != Carro.Id)
             {
