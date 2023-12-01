@@ -47,3 +47,6 @@ Carro: Classe modelo para representação de um carro e sua informações.
 * ### Data:
 
 CarroContext: Contexto do banco de dados utilizando o Entity Framework Core.
+
+
+### Realizado por Diogo Santos Teixeira e Guilherme Ferreira
