@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\tpSw04.props" />
+</Project>
