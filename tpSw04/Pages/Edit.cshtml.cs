@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using tpSw04.Data;
 using tpSw04.Models;
 
-namespace tpSw04.Views
+namespace tpSw04.Pages
 {
     public class EditModel : PageModel
     {

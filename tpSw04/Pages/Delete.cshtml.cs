@@ -8,18 +8,19 @@ using Microsoft.EntityFrameworkCore;
 using tpSw04.Data;
 using tpSw04.Models;
 
-namespace tpSw04.Views
+namespace tpSw04.Pages
 {
-    public class DetailsModel : PageModel
+    public class DeleteModel : PageModel
     {
         private readonly tpSw04.Data.CarroContext _context;
 
-        public DetailsModel(tpSw04.Data.CarroContext context)
+        public DeleteModel(tpSw04.Data.CarroContext context)
         {
             _context = context;
         }
 
-      public Carro Carro { get; set; } = default!; 
+        [BindProperty]
+      public Carro Carro { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,6 +30,7 @@ namespace tpSw04.Views
             }
 
             var carro = await _context.Carros.FirstOrDefaultAsync(m => m.Id == id);
+
             if (carro == null)
             {
                 return NotFound();
@@ -38,6 +40,24 @@ namespace tpSw04.Views
                 Carro = carro;
             }
             return Page();
+        }
+
+        public async Task<IActionResult> OnPostAsync(int? id)
+        {
+            if (id == null || _context.Carros == null)
+            {
+                return NotFound();
+            }
+            var carro = await _context.Carros.FindAsync(id);
+
+            if (carro != null)
+            {
+                Carro = carro;
+                _context.Carros.Remove(Carro);
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToPage("./Index");
         }
     }
 }
